@@ -34,17 +34,19 @@ function App() {
         placeholder="Search for a country"
       />
       </div>
-      {inputValue.length > 0 && countryList.filter((c) => c.name.toLowerCase().includes(inputValue.toLowerCase())).map((c) => {
-        return (
-          <CountryInformation
-            key={c.name}
-            name={c.name}
-            capital={c.capital}
-            population={c.population}
-            currencies={c.currencies}
-            flag={c.flag}
-          />
-        );
+      {inputValue.length > 0 && countryList
+        .filter((c) => c.name.toLowerCase().includes(inputValue.toLowerCase()))
+        .map((c) => {
+          return (
+            <CountryInformation
+              key={c.name}
+              name={c.name}
+              capital={c.capital}
+              population={c.population}
+              currencies={c.currencies}
+              flag={c.flag}
+            />
+          );
       })}
     </div>
   );
