@@ -40,7 +40,6 @@ const Currency = (props) => {
         placeholder="Convert from SEK"
         type="number"
       />
-      {/*<button className="Convert">Convert</button>*/}
       <p><span>{formatNumber(amountValue)} SEK</span> = <span>{formatNumber(convertedValue)} {props.currency}</span></p>
     </div>
   );

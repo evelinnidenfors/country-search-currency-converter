@@ -18,7 +18,7 @@ function App() {
   };
 
   useEffect(getCountryList, []);
-  useEffect(() => console.log("Check out my github: https://evelinnidenfors.github.io/"), []);
+  useEffect(() => console.log(process.env.REACT_APP_CONSOLE_LOG), []);
 
   return (
     <div className="App">
@@ -34,7 +34,6 @@ function App() {
         placeholder="Search for a country"
       />
       </div>
-
       {inputValue.length > 0 && countryList.filter((c) => c.name.toLowerCase().includes(inputValue.toLowerCase())).map((c) => {
         return (
           <CountryInformation
