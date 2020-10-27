@@ -6,7 +6,7 @@ const Currency = (props) => {
   const convertAmount = () => {
     //using api key for exchange rates with Euro as base
     const currencyEndpoint =
-      "http://data.fixer.io/api/2013-03-16?access_key=" +
+      "http://data.fixer.io/api/latest?access_key=" +
       process.env.REACT_APP_CURRENCY_API_KEY +
       "&base=EUR" +
       "&symbols=" +

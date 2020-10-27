@@ -35,7 +35,7 @@ function App() {
       />
       </div>
       {inputValue.length > 0 && countryList
-        .filter((c) => c.name.toLowerCase().includes(inputValue.toLowerCase()))
+        .filter((c) => c.name.toLowerCase().includes(inputValue.toLowerCase()) || c.capital.toLowerCase().includes(inputValue.toLowerCase()))
         .map((c) => {
           return (
             <CountryInformation
