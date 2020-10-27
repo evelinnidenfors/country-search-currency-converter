@@ -12,7 +12,7 @@ const CountryInformation = (props) => {
         return currency.code !== null && currency.code !== "(none)" && (
           <div key={currency.code}>
             <p><b>Currency</b> {" " + currency.name}</p>
-            <Currency currency={currency.code} />
+            <Currency currency={currency.code} currencyList={props.currencyList}/>
           </div>
         )
       }

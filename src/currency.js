@@ -5,22 +5,22 @@ const Currency = (props) => {
   const [convertedValue, setConvertedValue] = useState(0);
   const convertAmount = () => {
     //using api key for exchange rates with Euro as base
-    const currencyEndpoint =
-      "http://data.fixer.io/api/latest?access_key=" +
-      process.env.REACT_APP_CURRENCY_API_KEY +
-      "&base=EUR" +
-      "&symbols=" +
-      props.currency + ",SEK";
-    fetch(currencyEndpoint)
-      .then((response) => response.json())
-      .then((data) => { 
+    // const currencyEndpoint =
+    //   "http://data.fixer.io/api/latest?access_key=" +
+    //   process.env.REACT_APP_CURRENCY_API_KEY +
+    //   "&base=EUR" +
+    //   "&symbols=" +
+    //   props.currency + ",SEK";
+    // fetch(currencyEndpoint)
+    //   .then((response) => response.json())
+    //   .then((data) => { 
         //converting from Euro to SEK as free version api response is limited to Euro
-        const euroSekConversion = (amountValue / data.rates["SEK"]);
+        const euroSekConversion = (amountValue / props.currencyList.rates["SEK"]);
         //converting from SEK to searched currency
-        const calculatedValue = (euroSekConversion * data.rates[props.currency]);
+        const calculatedValue = (euroSekConversion * props.currencyList.rates[props.currency]);
         //limiting numbers after decimal point
         setConvertedValue(calculatedValue.toFixed(2))
-      });
+    //   });
   };
   const switchAmountHandler = (amount) => {
     setAmountValue(amount);

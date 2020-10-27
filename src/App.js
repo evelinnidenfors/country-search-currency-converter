@@ -5,11 +5,21 @@ import CountryInformation from "./countryInformation";
 function App() {
   const [inputValue, setInputValue] = useState("");
   const [countryList, setCountryList] = useState([]);
+  const [currencyList, setCurrencyList] = useState([]);
 
   const switchNameHandler = (country) => {
     setInputValue(country);
   };
 
+  const getCurrencyList = () => {
+  const currencyEndpoint =
+      "http://data.fixer.io/api/latest?access_key=" +
+      process.env.REACT_APP_CURRENCY_API_KEY +
+      "&base=EUR" 
+      fetch(currencyEndpoint)
+      .then((response) => response.json())
+      .then((data) => setCurrencyList(data));
+}
   const getCountryList = () => {
     const apiUrl = "https://restcountries.eu/rest/v2/all";
     fetch(apiUrl)
@@ -18,6 +28,7 @@ function App() {
   };
 
   useEffect(getCountryList, []);
+  useEffect(getCurrencyList, [])
   useEffect(() => console.log(process.env.REACT_APP_CONSOLE_LOG), []);
 
   return (
@@ -45,6 +56,7 @@ function App() {
               population={c.population}
               currencies={c.currencies}
               flag={c.flag}
+              currencyList={currencyList}
             />
           );
       })}
