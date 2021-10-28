@@ -31,8 +31,6 @@ function App() {
   useEffect(getCurrencyList, []);
   useEffect(() => console.log(process.env.REACT_APP_CONSOLE_LOG), []);
 
-  console.log(countryList);
-
   return (
     <div className="App">
       <div className="header">
