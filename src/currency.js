@@ -4,16 +4,6 @@ const Currency = (props) => {
   const [amountValue, setAmountValue] = useState(1);
   const [convertedValue, setConvertedValue] = useState(0);
   const convertAmount = () => {
-    //using api key for exchange rates with Euro as base
-    // const currencyEndpoint =
-    //   "http://data.fixer.io/api/latest?access_key=" +
-    //   process.env.REACT_APP_CURRENCY_API_KEY +
-    //   "&base=EUR" +
-    //   "&symbols=" +
-    //   props.currency + ",SEK";
-    // fetch(currencyEndpoint)
-    //   .then((response) => response.json())
-    //   .then((data) => { 
         //converting from Euro to SEK as free version api response is limited to Euro
         const euroSekConversion = (amountValue / props.currencyList.rates["SEK"]);
         //converting from SEK to searched currency

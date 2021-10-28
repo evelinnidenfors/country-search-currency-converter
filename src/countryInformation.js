@@ -8,7 +8,7 @@ const CountryInformation = (props) => {
       <p><b>Country Name</b> {props.name}</p>
       <p><b>Capital</b> {props.capital}</p>
       <p><b>Population</b> {new Intl.NumberFormat().format(props.population)}</p>
-      {props.currencies.map((currency) => {
+      {props.currencies != null && props.currencies.map((currency) => {
         return currency.code !== null && currency.code !== "(none)" && (
           <div key={currency.code}>
             <p><b>Currency</b> {" " + currency.name}</p>

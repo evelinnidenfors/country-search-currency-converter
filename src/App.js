@@ -15,21 +15,23 @@ function App() {
   const currencyEndpoint =
       "http://data.fixer.io/api/latest?access_key=" +
       process.env.REACT_APP_CURRENCY_API_KEY +
-      "&base=EUR" 
+      "&base=EUR"
       fetch(currencyEndpoint)
       .then((response) => response.json())
       .then((data) => setCurrencyList(data));
 }
   const getCountryList = () => {
-    const apiUrl = "https://restcountries.eu/rest/v2/all";
+    const apiUrl = "https://restcountries.com/v2/all";
     fetch(apiUrl)
       .then((response) => response.json())
       .then((data) => setCountryList(data));
   };
 
   useEffect(getCountryList, []);
-  useEffect(getCurrencyList, [])
+  useEffect(getCurrencyList, []);
   useEffect(() => console.log(process.env.REACT_APP_CONSOLE_LOG), []);
+
+  console.log(countryList);
 
   return (
     <div className="App">
@@ -42,11 +44,11 @@ function App() {
       </h1>
       <input
         onChange={(event) => switchNameHandler(event.target.value)}
-        placeholder="Search for a country"
+        placeholder="Search for a country/capital"
       />
       </div>
       {inputValue.length > 0 && countryList
-        .filter((c) => c.name.toLowerCase().includes(inputValue.toLowerCase()) || c.capital.toLowerCase().includes(inputValue.toLowerCase()))
+        .filter((c) => c.name.toLowerCase().includes(inputValue.toLowerCase()) || (c.capital != null && c.capital.toLowerCase().includes(inputValue.toLowerCase())))
         .map((c) => {
           return (
             <CountryInformation
