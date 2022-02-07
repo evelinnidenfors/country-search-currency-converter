@@ -5,9 +5,9 @@ const Currency = (props) => {
   const [convertedValue, setConvertedValue] = useState(0);
   const convertAmount = () => {
         //converting from Euro to SEK as free version api response is limited to Euro
-        const euroSekConversion = (amountValue / props.currencyList.rates["SEK"]);
+        const euroSekConversion = (amountValue / props.sekRate);
         //converting from SEK to searched currency
-        const calculatedValue = (euroSekConversion * props.currencyList.rates[props.currency]);
+        const calculatedValue = (euroSekConversion * props.currencyRate);
         //limiting numbers after decimal point
         setConvertedValue(calculatedValue.toFixed(2))
     //   });
